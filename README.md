@@ -9,8 +9,8 @@ This challenge, is fully unsupervised - so put your anomaly belt on and get to i
 
 # Table of Contents  
 [Dataset](#Dataset)  
-[Solution Example](#SolutionExample)  
-[Evaluation](#Evaluation)  
+[Evaluation](#Evaluation)
+[Solution Example](#SolutionExample)    
 [Submissions](#Submissions)
 
 # Dataset
@@ -106,12 +106,6 @@ One of the IP Cameras is connected to another IP Camera. Here is a quick network
 
 ![Network](/resources/DataHackViz.png?raw=true "Data Hack")
 
-# Solution Example
-<a name="SolutionExample"></a>
-Please look for the example.ipynb notebook in the examples directory. There should be a straightforward approach on anomaly detection using the datasets above.
-
-TODO: add example
-
 # Evaluation
 <a name="Evaluation"></a>
 As this is an unsupervised challenge, the evaluation process will be a mix of classical leaderboard evaluation and in-person review of the models used. <br>
@@ -122,6 +116,16 @@ Your model results will be matched against a prelabeled dataset - this grading w
 Why is this observation an anomaly? Does your model produce a confidence level for each result? Can we calculate the level of importance of this anomaly?
 * **Innovation**
 Use of an non-trivial algorithm. Creation of ingenious useful features. Any other creative ideas could also be credited with extra scores.
+
+# Solution Example
+<a name="SolutionExample"></a>
+
+There are many approaches to an anomaly detection in network security. 
+One Possible solution is to look for anomalous devices in sub-populations. Specifically we can group the sessions in each network based on the session initiator device type.
+
+In our solution example code that we will upload later on, 
+We will demonstrate this approach by using Elliptic Envelope model in order to find anomalies in the VOIPs traffic.
+
 
 # Submissions
 <a name="Submissions"></a>
