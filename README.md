@@ -9,9 +9,10 @@ This challenge, is fully unsupervised - so put your anomaly belt on and get to i
 
 # Table of Contents  
 [Dataset](#Dataset)  
-[Evaluation](#Evaluation)
+[Evaluation](#Evaluation)  
 [Solution Example](#SolutionExample)    
-[Submissions](#Submissions)
+[Submissions](#Submissions)  
+[Contact Us](#Contact)
 
 # Dataset
 <a name="Dataset"></a>
@@ -113,7 +114,7 @@ The final score will be composed of (Sorted descendingly by importance):
 * **Leaderboard Evaluation**
 Your model results will be matched against a prelabeled dataset - this grading will occur as soon as you'll submit your results for evaluation.
 * **Explainability**
-Why is this observation an anomaly? Does your model produce a confidence level for each result? Can we calculate the level of importance of this anomaly?
+Why is this observation an anomaly? Can we calculate the level of importance of this anomaly?
 * **Innovation**
 Use of an non-trivial algorithm. Creation of ingenious useful features. Any other creative ideas could also be credited with extra scores.
 
@@ -130,5 +131,10 @@ We will demonstrate this approach by using Elliptic Envelope model in order to f
 # Submissions
 <a name="Submissions"></a>
 Please send us the anomaly scores you received for each device along with your code in a zip file. You can submit the results as many times as you wish.
+
+
+# Contact Us
+<a name="Contact"></a>
+For every question, suggestion or any other observations you might have, please do not hesitate to contact us at: datahack@armis.com
 
 # ENJOY!
