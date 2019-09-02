@@ -130,32 +130,28 @@ We will demonstrate this approach by using Elliptic Envelope model in order to f
 
 # Submissions
 <a name="Submissions"></a>
-As this is a leader board challenge, in order to automatically grade your results, you'll need to send the anomolus devices you found using HTTP to our api endpoint as a JSON list with the following structure: 
+As this is a leader board challenge, in order to automatically grade your results, you'll need to send the devices list with anomaly score for each of them using HTTP POST request to our api endpoint as a JSON list with the following structure:
 ```
 [
-  {
-    "network_id": "The network id int",
-    "device_id": "The network id int",
-    "confidence": "The confidence that this device is anomolus - float between 0 and 1"
-   }
+  [
+    "network_id - The network id int",
+    "device_id - The network id int",
+    "confidence - The anomaly score for this device - float between 0 and 1"
+   ]
 ]
 ```
+**Please pay close attention to the order of the inner array - network id, device id, confidence** 
 For Example:
 ```
 [
-  {
-    "network_id": 1,
-    "device_id": 222,
-    "confidence": 0.75
-   },
-   {
-    "network_id": 0,
-    "device_id": 24,
-    "confidence": 0.11
-   }
+  [ 1, 222, 0.75 ],
+  [ 0, 24, 0.11 ]
 ]
 ```
+In this example there are 2 devices: the first one is device_id 222 from network id 1, and it receive the anomaly score of 0.75, the second device is device_id 24 from network id 0, and it receive the anomaly score of 0.11.
+
 A detailed submission code will be available in the solution example. 
+
 After each submission, please send us your code zipped to the "datahack@armis.com" so we can start reviewing your algorithms.
 
 
