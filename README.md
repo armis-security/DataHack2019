@@ -110,13 +110,14 @@ one of the IP cameras is connected to another IP camera. Here is a quick network
 
 # Evaluation
 <a name="Evaluation"></a>
+**Please note: the scoring guidelines have been updated.**
 As this is an unsupervised challenge, the evaluation process will be a mix of classic "leaderboard" evaluation and in-person review of the models used. <br>
-The final score will be composed of:
-* **Leaderboard Evaluation** (70%) <br>
+The final score will be composed of: 
+* **Leaderboard Evaluation** (60%) <br>
 Your model results will be matched against a prelabeled dataset, and AUC (Area Under the Curve) will be calculated on the test set.
 * **Explainability** (20%) <br>
 In what measures is this an anomaly? How important is it?
-* **Innovation** (10%) <br>
+* **Innovation** (20%) <br>
 Use of a non-trivial algorithm. Creation of ingenious useful features. Any other creative ideas could also be credited with extra scores. Surprise us.
 
 # Solution Example
