@@ -22,8 +22,8 @@ There are two CSV files:
 * **Sessions.csv** - Details of the connections between a device and its hosts,
 aggregated by hours (each row holds the aggregated data of several sessions).
 
-## Device Dataset In Depth:
-### Fields
+## Device Dataset In Depth
+### Fields:
 | Field | Description |
 | ------------- |-------------|
 | network_id | A numeric network identifier, this file contains device information from 4 independent networks (0, 1, 2, 3)|
@@ -35,14 +35,14 @@ aggregated by hours (each row holds the aggregated data of several sessions).
 
 * Other than "network_id", "device_id" and "type", all fields are optional, and can be null.
 
-### Example
-In the snippet below there are 4 devices: 3 apple watches and one ipad. They are all from network 0.
+### Device Dataset - Example:
+In the snippet below there are 4 devices: 3 apple watches and 1 ipad. They are all from network 0.
 
 ![Devices](/resources/devices.png?raw=true "Devices")
 
-## Sessions Dataset In Depth:
+## Sessions Dataset In Depth
 
-### Fields
+### Fields:
 | Field | Description |
 | ------------- |-------------|
 | network_id | A numeric network identifier; the data contains sessions from 4 independent networks (0, 1, 2, 3) |
@@ -87,51 +87,51 @@ In the snippet below there are 4 devices: 3 apple watches and one ipad. They are
 * Other than "network_id" and "device_id", all fields are optional and can be null.
 * Sessions between two devices in the same network will only be displayed once, with the device_id field indicating the id of device that initiated the session, and service_device_id indicating the id of the target device.
 
-### Example
+### Example:
 In the snippet below you can find some aggregations for network 0.<br>
 Let's look at the first line - what does it tell us? <br>
-We can see that device no. 35 had initiated 39 sessions with host "ecbb92...", using protocol TCP and port 49152, during the hour that started at 156507480 (epoch time for 06.08.2019 07:00 UTC). During those sessions, a total of 260 packets were transferred. <br> <br>
-What can you learn from the other lines?
+We can see that device no. 35 had initiated 39 sessions with host "ecbb92...", using protocol TCP and port 49152, during the hour that started at 156507480 (epoch time for 06.08.2019 07:00 UTC). During those sessions, a total of 260 packets were transferred. <br> 
+What can you learn from the other lines?<br>
 ![Sessions](/resources/sessions.png?raw=true "Sessions")
 
 
-## Data Sets 2 Network Diagram
+## Example - Network Diagram:
 
-Let's review some connections from network number 1. The following tables display 5 devices data and their relevant sessions:
+Let's review some connections from network number 1. The following tables display the data of 5 devices and their relevant sessions:
 
 ![Devices](/resources/viz_devices.png?raw=true "Devices")
 
 ![Sessions](/resources/viz_sessions.png?raw=true "Sessions")
 
-From those snippets we can understand that there is one PC connected to 3 IP Cameras. 
-One of the IP Cameras is connected to another IP Camera. Here is a quick network diagram explaining the connections visually:
+From these snippets we can learn there is one PC, connected to 3 IP cameras, and that 
+one of the IP cameras is connected to another IP camera. Here is a quick network diagram showing the connections:
 
 ![Network](/resources/DataHackViz.png?raw=true "Data Hack")
 
 # Evaluation
 <a name="Evaluation"></a>
-As this is an unsupervised challenge, the evaluation process will be a mix of classical leaderboard evaluation and in-person review of the models used. <br>
-The final score will be composed of (Sorted descendingly by importance):
-* **Leaderboard Evaluation**
-Your model results will be matched against a prelabeled dataset - this grading will occur as soon as you'll submit your results for evaluation.
-* **Explainability**
-Why is this observation an anomaly? Can we calculate the level of importance of this anomaly?
-* **Innovation**
-Use of an non-trivial algorithm. Creation of ingenious useful features. Any other creative ideas could also be credited with extra scores.
+As this is an unsupervised challenge, the evaluation process will be a mix of classic "leaderboard" evaluation and in-person review of the models used. <br>
+The final score will be composed of:
+* **Leaderboard Evaluation** (70%) <br>
+Your model results will be matched against a prelabeled dataset, and AUC (Area Under the Curve) will be calculated on the test set.
+* **Explainability** (20%) <br>
+In what measures is this an anomaly? How important is it?
+* **Innovation** (10%) <br>
+Use of a non-trivial algorithm. Creation of ingenious useful features. Any other creative ideas could also be credited with extra scores. Surprise us.
 
 # Solution Example
 <a name="SolutionExample"></a>
 
-There are many approaches to an anomaly detection in network security. 
-One Possible solution is to look for anomalous devices in sub-populations. Specifically we can group the sessions in each network based on the session initiator device type.
+There are many approaches to an anomaly detection in network security. <br>
+One possible solution is to look for anomalous devices in sub-populations. Specifically, we can group the sessions in each network based on the session initiator device type.
 
-In our solution example code that we will upload later on, 
-We will demonstrate this approach by using Elliptic Envelope model in order to find anomalies in the VOIPs traffic.
+In our solution example code, that will soon be added to the repo, we will demonstrate this approach by using an Elliptic Envelope model in order to find anomalies in VOIP traffic.
 
 
 # Submissions
 <a name="Submissions"></a>
-As this is a leader board challenge, in order to automatically grade your results, you'll need to send the devices list with anomaly score for each of them using HTTP POST request to our api endpoint as a JSON list with the following structure:
+In order to automatically grade your results - and, of course, appear in the challenge leaderboard - you need to send your results using a HTTP POST request to our api endpoint. <br>
+The results - a list of all device IDs, with the anomaly score for each device - needs to be sent as a JSON list, with the following structure:
 ```
 [
   [
@@ -141,23 +141,24 @@ As this is a leader board challenge, in order to automatically grade your result
    ]
 ]
 ```
-**Please pay close attention to the order of the inner array - network id, device id, confidence** 
-For Example:
+**Please pay close attention to the order of the inner array - network id, device id, confidence.** <br> <br>
+For example:
 ```
 [
   [ 1, 222, 0.75 ],
   [ 0, 24, 0.11 ]
 ]
 ```
-In this example there are 2 devices: the first one is device_id 222 from network id 1, and it receive the anomaly score of 0.75, the second device is device_id 24 from network id 0, and it receive the anomaly score of 0.11.
+In this example there are 2 devices: the first one is device_id 222 from network 1, and its anomaly score is 0.75 (the higher the score, the more likely it is that this device is anomalous).<br>
+The second device is device_id 24 from network 0, and it received the anomaly score of 0.11. <br><br>
 
-A detailed submission code will be available in the solution example. 
+A detailed code for submission will be available in the solution example. <br><br>
 
-After each submission, please send us your code zipped to the "datahack@armis.com" so we can start reviewing your algorithms.
+After each submission, please send us your code, in a zipped file, to "datahack@armis.com", so we review your solution.
 
 
 # Contact Us
 <a name="Contact"></a>
-For every question, suggestion or any other observations you might have, please do not hesitate to contact us at: datahack@armis.com
+For every question, suggestion, or any other observations you might have, please do not hesitate to contact us: datahack@armis.com
 
 # ENJOY!
