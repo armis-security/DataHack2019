@@ -4,7 +4,7 @@
 
 # Devices Gone Rogue Challenge
 Ever wondered what would happen if you just plug in that seemingly innocent USB you found laying around? You’re about to find out! In this devices-gone-rogue challenge - should you choose to accept it - you will gain access to traffic data of ~ 1M devices, and will be tasked with finding the devices that, well, misbehave. 
-This challenge, is fully unsupervised - so put your anomaly belt on and get to it!
+This challenge is fully unsupervised - so put your anomaly belt on and get to it!
 
 
 # Table of Contents  
@@ -16,81 +16,82 @@ This challenge, is fully unsupervised - so put your anomaly belt on and get to i
 
 # Dataset
 <a name="Dataset"></a>
-We will use devices information and network traffic from several different networks:
+The dataset contains device data and network traffic taken from several different networks.
+There are two CSV files:
 * **Devices.csv** - Data of devices and their type, manufacturer and model.
-* **Sessions.csv** - Details of the connections between a device and hosts,
-aggregated by hours (each row aggregates data from several sessions).
+* **Sessions.csv** - Details of the connections between a device and its hosts,
+aggregated by hours (each row holds the aggregated data of several sessions).
 
-## Device Dataset in-depth
+## Device Dataset In Depth:
 ### Fields
 | Field | Description |
 | ------------- |-------------|
-| network_id | A numeric network identifier, this file contains devices information from 4 independent networks (0, 1, 2, 3)|
+| network_id | A numeric network identifier, this file contains device information from 4 independent networks (0, 1, 2, 3)|
 | device_id | A numeric device identifier, unique inside the network |
 | type | The device type, one of ("MOBILE_PHONE", "TABLET", "PC", "WATCH", "VOIP", "PRINTER", "IP_CAMERA") |
 | model | The device model |
 | manufacturer | The device manufacturer |
-| operating_system_version | The device Operating System Version |
+| operating_system_version | The device operating system version |
 
-* Other than "network_id", "device_id" and "type" all fields are optional and can be null
+* Other than "network_id", "device_id" and "type", all fields are optional, and can be null.
 
 ### Example
-In the snippet below there are 3 apple watch devices and one ipad all from network 0.
+In the snippet below there are 4 devices: 3 apple watches and one ipad. They are all from network 0.
 
 ![Devices](/resources/devices.png?raw=true "Devices")
 
-## Sessions Dataset in-depth
+## Sessions Dataset In Depth:
 
 ### Fields
 | Field | Description |
 | ------------- |-------------|
-| network_id | A numeric network identifier, this file contains sessions information from 4 independent networks (0, 1, 2, 3) |
-| device_id | A numeric device identifier |
-| timestamp | The hour for which the sessions data are aggregated |
-| host | The domain the device was connected to, if domain is unknown the host ip will be displayed (this field is hashed) |
-| host_ip | The ip of the host the device was connected to (this field is hashed) |
+| network_id | A numeric network identifier; the data contains sessions from 4 independent networks (0, 1, 2, 3) |
+| device_id | A numeric device identifier; it is only unique within its specific network |
+| timestamp | The hour for which the sessions are aggregated |
+| host | The domain the device was connected to; if domain is unknown, the host IP address will be displayed (this field is hashed) |
+| host_ip | The IP address of the host the device was connected to (this field is hashed) |
 | port_dst | The destination port used in the session |
 | transport_protocol | The connection protocol - could be TCP or UDP |
-| service_device_id | The device id of the destination host that our device was connected to |
-| packets_count | Total packets transferred during the aggregated sessions |
+| service_device_id | The device id of the host our device was connected to |
+| packets_count | Total number of packets transferred during the aggregated sessions |
 | outbound_bytes_count | Total bytes sent during the aggregated sessions |
 | inbound_bytes_count | Total bytes received during the aggregated sessions |
-| packet_loss | Total packets that were lost during the session |
-| retransmit_count | Total packets that were retransmitted during the aggregated sessions |
+| packet_loss | Total number of packets that were lost during the session |
+| retransmit_count | Total number of packets that were retransmitted during the aggregated sessions |
 | latency | Network latency during the aggregated sessions |
-| session_count | Count of sessions that this aggregated row holds |
-| outbound_packets_count | Total packets sent during the aggregated sessions |
-| inbound_packets_count | Total packets received during the aggregated sessions |
-| outbound_bytes_max | Max bytes sent in one session of the aggregated sessions |
-| outbound_bytes_min | Min bytes sent in one session of the aggregated sessions |
-| outbound_bytes_mean | Mean of bytes sent during the aggregated sessions |
+| session_count | Number of sessions this aggregated row holds |
+| outbound_packets_count | Total number of packets sent during the aggregated sessions |
+| inbound_packets_count | Total number of packets received during the aggregated sessions |
+| outbound_bytes_max | Max number of bytes sent in one session of the aggregated sessions |
+| outbound_bytes_min | Min number of bytes sent in one session of the aggregated sessions |
+| outbound_bytes_mean | Mean number of bytes sent during the aggregated sessions |
 | outbound_bytes_median | Median of bytes sent during the aggregated sessions |
 | outbound_bytes_stddev | Standard deviation of bytes sent during the aggregated sessions |
-| inbound_bytes_max | Max bytes received in one session of the aggregated sessions |
-| inbound_bytes_min | Min bytes received in one session of the aggregated sessions |
-| inbound_bytes_mean | Mean of bytes received during the aggregated sessions |
-| inbound_bytes_median | Median of bytes received during the aggregated sessions |
+| inbound_bytes_max | Max number of bytes received in one session of the aggregated sessions |
+| inbound_bytes_min | Min number of bytes received in one session of the aggregated sessions |
+| inbound_bytes_mean | Mean number of bytes received during the aggregated sessions |
+| inbound_bytes_median | Median number of bytes received during the aggregated sessions |
 | inbound_bytes_stddev | Standard deviation of bytes received during the aggregated sessions |
 | outbound_packet_size_max | Max packet size sent in one session of the aggregated sessions |
 | outbound_packet_size_min | Min packet size sent in one session of the aggregated sessions |
-| outbound_packet_size_mean | Mean of packet size sent during the aggregated sessions |
-| outbound_packet_size_median | Median of packet size sent during the aggregated sessions |
+| outbound_packet_size_mean | Mean packet size sent during the aggregated sessions |
+| outbound_packet_size_median | Median packet size sent during the aggregated sessions |
 | outbound_packet_size_stddev | Standard deviation of packet size sent during the aggregated sessions |
 | inbound_packet_size_max | Max packet size received in one session of the aggregated sessions |
 | inbound_packet_size_min | Min packet size received in one session of the aggregated sessions |
-| inbound_packet_size_mean | Mean of packet size received during the aggregated sessions |
-| inbound_packet_size_median | Median of packet size received during the aggregated sessions |
+| inbound_packet_size_mean | Mean packet size received during the aggregated sessions |
+| inbound_packet_size_median | Median packet size received during the aggregated sessions |
 | inbound_packet_size_stddev | Standard deviation of packet size received during the aggregated sessions |
 
 
-* Other than "network_id" and "device_id" all fields are optional and can be null
-* Sessions between two devices in the same network will only be displayed once - with the device_id indicates the id of device that initiated the session and service_device_id indicates the id of the target device 
+* Other than "network_id" and "device_id", all fields are optional and can be null.
+* Sessions between two devices in the same network will only be displayed once, with the device_id field indicating the id of device that initiated the session, and service_device_id indicating the id of the target device.
 
 ### Example
-In the snippet below there are some row aggregation from network 0.
-For example, the first line tells us that device id 35 connected 39 times using TCP to host "ecbb92..." with port 49152 during the hour started at 156507480 (06.08.2019 07:00 UTC). 
-During those sessions a total of 260 packets transferred.
-
+In the snippet below you can find some aggregations for network 0.<br>
+Let's look at the first line - what does it tell us? <br>
+We can see that device no. 35 had initiated 39 sessions with host "ecbb92...", using protocol TCP and port 49152, during the hour that started at 156507480 (epoch time for 06.08.2019 07:00 UTC). During those sessions, a total of 260 packets were transferred. <br> <br>
+What can you learn from the other lines?
 ![Sessions](/resources/sessions.png?raw=true "Sessions")
 
 
