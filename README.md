@@ -124,9 +124,12 @@ Use of a non-trivial algorithm. Creation of ingenious useful features. Any other
 <a name="SolutionExample"></a>
 
 There are many approaches to an anomaly detection in network security. <br>
-One possible solution is to look for anomalous devices in sub-populations. Specifically, we can group the sessions in each network based on the session initiator device type.
 
-In our solution example code, that will soon be added to the repo, we will demonstrate this approach by using an Elliptic Envelope model in order to find anomalies in VOIP traffic.
+In the [solution example notebook](solution-example/full_flow_solution.ipynb) you'll find a very naive approach using Elliptic Envelope model. 
+
+The model run on each network separately using only 5 features to detect anomalies. 
+
+Ignoring the unsatisfying but predictable score, this solution contains the full flow - reading the data, creating feature set, running the model and than sending the results to our leader board. 
 
 
 # Submissions
