@@ -156,9 +156,11 @@ For example:
 In this example there are 2 devices: the first one is device_id 222 from network 1, and its anomaly score is 0.75 (the higher the score, the more likely it is that this device is anomalous).<br>
 The second device is device_id 24 from network 0, and it received the anomaly score of 0.11. <br><br>
 
-A detailed code for submission will be available in the solution example. <br><br>
+A detailed code for submission is available in the solution example. <br><br>
 
 After each submission, please send us your code, in a zipped file, to "datahack@armis.com", so we review your solution.
+
+More details about DataHack leader board can be found [here](https://dagshub.com/Datahack/DataHack-Resources-2019/src/master/Leaderboard.md) 
 
 
 # Contact Us
