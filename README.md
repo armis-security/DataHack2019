@@ -134,6 +134,7 @@ Ignoring the unsatisfying but predictable score, this solution contains the full
 
 # Submissions
 <a name="Submissions"></a>
+Our Leader Board can be accessed here https://leaderboard.datahack.org.il/armis <br>
 In order to automatically grade your results - and, of course, appear in the challenge leaderboard - you need to send your results using a HTTP POST request to our api endpoint. <br>
 The results - a list of all device IDs, with the anomaly score for each device - needs to be sent as a JSON list, with the following structure:
 ```
