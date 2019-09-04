@@ -10,11 +10,18 @@ Ever wondered what would happen if you just plug in that seemingly innocent USB 
 This challenge is fully unsupervised - so put your anomaly belt on and get to it!
 
 # Table of Contents  
+[The Data](#Data)  
 [Dataset](#Dataset)  
 [Evaluation](#Evaluation)  
 [Solution Example](#SolutionExample)    
 [Submissions](#Submissions)  
 [Contact Us](#Contact)
+
+# The DATA
+<a name="Data"></a>
+Ok, so finally the data is here: <br>
+[Devices](https://armis-datahack.s3.amazonaws.com/all_devices.csv) <br>
+[Sessions](https://armis-datahack.s3.amazonaws.com/all_sessions.csv )
 
 # Dataset
 <a name="Dataset"></a>
