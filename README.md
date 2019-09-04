@@ -2,12 +2,12 @@
 
 ![Armis](/resources/Armis-LinkedIn-Banner-IMG.png?raw=true "Armis")
 
+# Participants - Please join our Telegram channel
+https://t.me/joinchat/EYtM0k4eAKoPDjJhVamHpg
+
 # Devices Gone Rogue Challenge
 Ever wondered what would happen if you just plug in that seemingly innocent USB you found laying around? You’re about to find out! In this devices-gone-rogue challenge - should you choose to accept it - you will gain access to traffic data of ~100K devices, and will be tasked with finding the devices that, well, misbehave. 
 This challenge is fully unsupervised - so put your anomaly belt on and get to it!
-
-# Participants - Please join our Telegram channel
-
 
 # Table of Contents  
 [Dataset](#Dataset)  
